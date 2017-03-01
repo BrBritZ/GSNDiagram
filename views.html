@@ -1,0 +1,53 @@
+<!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
+
+<!-- Free licenses available for academic and educational purposes, referenced on https://www.nwoods.com/sales/academic-use.html -->
+<!-- Use for academic purpose by Teerawatt Teeravatcharoenchai -->
+<!-- University of Glasgow, Computing Science -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSN Diagram Builder</title>
+	<meta name="description" content="Drag a link to reconnect it. Nodes have custom Adornments for selection, resizing, and reshaping." />
+	<meta charset="UTF-8">
+	<script src="go-debug.js"></script>
+	<script src="scripts.js"></script>
+</head>
+    <body onload="init()">
+        <h1>Safety-Critical Systems: Open Assessment 2016-17</h1>
+        <h2>Using GSN to Integrate Software Safety and Cyber Security</h2>
+        <h5> by Teerawat Teeravatcharoenchai ID:2273032</h5>
+        <div id="main">
+            <div style="width:100%; white-space:nowrap;">
+                <span style="display: inline-block; vertical-align: top; width:130px">
+                    <div id="myPaletteDiv" style="border: solid 1px black; height: 620px"></div>
+                </span>
+
+                <span style="display: inline-block; vertical-align: top; width:80%">
+                    <div id="myDiagramDiv" style="border: solid 1px black; height: 620px"></div>
+                </span>
+            </div>
+            <p>
+                This tools use for creating GSN(Goal Structuring Notation) Diagram for safety and security case in complex software.
+                Users can drag and drop main element of GSN on the left side to create GSN diagram on the right side.
+                They can also create a link between each element and adjust text inside the element.
+            </p>
+            <div>
+                <div>
+                    <button id="SaveButton" onclick="save()">Save</button>
+                    <button onclick="load()">Load</button>
+                    Diagram Model saved in JSON format:
+                </div>
+                <textarea id="mySavedModel" style="width:100%;height:300px">
+                    { "class": "go.GraphLinksModel",
+                        "linkFromPortIdProperty": "fromPort",
+                        "linkToPortIdProperty": "toPort",
+                        "nodeDataArray": [
+                     ],
+                        "linkDataArray": [
+                     ]}
+                </textarea>
+            </div>
+        </div>
+    </body>
+</html>
