@@ -212,6 +212,7 @@ function init() {
             )
         );
 
+
     load();	// load an initial diagram from some JSON text
 
     // initialize the Palette that is on the left side of the page
@@ -301,4 +302,52 @@ function loadDiagramProperties(e) {
     // set Diagram.initialPosition, not Diagram.position, to handle initialization side-effects
     var pos = myDiagram.model.modelData.position;
     if (pos) myDiagram.initialPosition = go.Point.parse(pos);
+}
+// Load drone template
+function loadDroneTemplate(){
+   
+    var modelText = document.getElementById('mySavedModel');
+    var templateJson = 
+'{ "class": "go.GraphLinksModel",' +
+'  "linkFromPortIdProperty": "fromPort",' +
+'  "linkToPortIdProperty": "toPort",' +
+'  "modelData": {"position":"-196.03225129158125 -782.0914408481748"},' +
+'  "nodeDataArray": [ ' +
+'{"text":"G1: Drone system is acceptably safe and secure", "figure":"Rectangle", "fill":"#FFFFFF", "key":-1, "loc":"180 -680"},' +
+'{"text":"S1: Argument over cyber security and safety issue", "figure":"Parallelogram1", "fill":"#FFFFFF", "key":-4, "loc":"180 -560"},' +
+'{"text":"G2: Drone system is acceptably safe", "figure":"Rectangle", "fill":"#FFFFFF", "key":-3, "loc":"80 -430"},' +
+'{"text":"G3: Drone system is acceptably secure", "figure":"Rectangle", "fill":"#FFFFFF", "key":-5, "loc":"290 -430"},' +
+'{"text":"S2: Argument over the safety measure", "figure":"Parallelogram1", "fill":"#FFFFFF", "key":-6, "loc":"-70 -240"},' +
+'{"text":"S3: Argument over the cyber security measure", "figure":"Parallelogram1", "fill":"#FFFFFF", "key":-7, "loc":"390 -240"},' +
+'{"text":"G3: Dropping item", "figure":"Rectangle", "fill":"#FFFFFF", "key":-8, "loc":"-350 60"},' +
+'{"text":"G4: Flown in no-fly zone(prohibited area or danger area", "figure":"Rectangle", "fill":"#FFFFFF", "key":-9, "loc":"-190 80"},' +
+'{"text":"G5: Using camera in drone", "figure":"Rectangle", "fill":"#FFFFFF", "key":-10, "loc":"-10 70"},' +
+'{"text":"G6: Allocation frequency of drone", "figure":"Rectangle", "fill":"#FFFFFF", "key":-11, "loc":"160 70"},' +
+'{"text":"G7: Crashed or redirect to other location", "figure":"Rectangle", "fill":"#FFFFFF", "key":-12, "loc":"290 -70"},' +
+'{"text":"G8: Unmoved and uncontrollable from command centre", "figure":"Rectangle", "fill":"#FFFFFF", "key":-13, "loc":"490 -70"},' +
+'{"text":"G9: Information leaks", "figure":"Rectangle", "fill":"#FFFFFF", "key":-14, "loc":"670 -90"},' +
+'{"text":"Drone weight is under 20 kg", "figure":"RoundedRectangle", "fill":"#FFFFFF", "key":-2, "loc":"400 -560"},' +
+'{"text":"Context", "figure":"RoundedRectangle", "fill":"#FFFFFF", "key":-15, "loc":"-250 -240"},' +
+'{"text":"Context", "figure":"RoundedRectangle", "fill":"#FFFFFF", "key":-16, "loc":"560 -240"}' +
+' ],' +
+'  "linkDataArray": [ ' +
+'{"points":[180,-647.5999999999999,180,-637.5999999999999,180,-620,180,-620,180,-602.4,180,-592.4], "from":-1, "to":-4, "fromPort":"B", "toPort":"T"},' +
+'{"from":-4, "to":-3, "fromPort":"", "toPort":"T", "points":[180,-527.5999999999999,180,-517.5999999999999,180,-491.09999999999997,80,-491.09999999999997,80,-464.6,80,-454.6]},' +
+'{"from":-4, "to":-5, "fromPort":"B", "toPort":"T", "points":[180,-527.5999999999999,180,-517.5999999999999,180,-491.09999999999997,290,-491.09999999999997,290,-464.6,290,-454.6]},' +
+'{"from":-3, "to":-6, "fromPort":"B", "toPort":"T", "points":[80,-405.40000000000003,80,-395.40000000000003,80,-335,-70,-335,-70,-274.6,-70,-264.6]},' +
+'{"from":-6, "to":-9, "fromPort":"B", "toPort":"T", "points":[-70,-215.40000000000003,-70,-205.40000000000003,-70,-83.90000000000002,-190,-83.90000000000002,-190,37.599999999999994,-190,47.599999999999994]},' +
+'{"from":-6, "to":-8, "fromPort":"", "toPort":"T", "points":[-70,-215.4,-70,-205.4,-70,-86.10000000000001,-350,-86.10000000000001,-350,33.19999999999999,-350,43.19999999999999]},' +
+'{"from":-6, "to":-10, "fromPort":"B", "toPort":"T", "points":[-70,-215.40000000000003,-70,-205.40000000000003,-70,-85.00000000000001,-10,-85.00000000000001,-10,35.400000000000006,-10,45.400000000000006]},' +
+'{"from":-6, "to":-11, "fromPort":"", "toPort":"T", "points":[-70,-215.4,-70,-205.4,-70,-85,160,-85,160,35.400000000000006,160,45.400000000000006]},' +
+'{"from":-5, "to":-7, "fromPort":"B", "toPort":"", "points":[290,-405.40000000000003,290,-395.40000000000003,290,-338.9,390,-338.9,390,-282.4,390,-272.4]},' +
+'{"from":-7, "to":-12, "fromPort":"B", "toPort":"", "points":[390,-207.59999999999997,390,-197.59999999999997,390,-155,290,-155,290,-112.4,290,-102.4]},' +
+'{"from":-7, "to":-13, "fromPort":"", "toPort":"T", "points":[390,-207.59999999999997,390,-197.59999999999997,390,-155,490,-155,490,-112.4,490,-102.4]},' +
+'{"from":-7, "to":-14, "fromPort":"B", "toPort":"T", "points":[390,-207.59999999999997,390,-197.59999999999997,390,-157.2,670,-157.2,670,-116.8,670,-106.8]},' +
+'{"from":-6, "to":-15, "fromPort":"", "toPort":"R", "points":[-168.875,-240.00000000000003,-178.875,-240.00000000000003,-178.875,-240,-178.875,-240,-200.73857625084605,-240,-210.73857625084605,-240]},' +
+'{"from":-7, "to":-16, "fromPort":"", "toPort":"L", "points":[488.875,-239.99999999999997,498.875,-239.99999999999997,498.875,-240,498.875,-240,510.738576250846,-240,520.738576250846,-240]},' +
+'{"from":-4, "to":-2, "fromPort":"", "toPort":"L", "points":[264.25,-560,274.25,-560,274.25,-560,274.25,-560,301.23857625084605,-560,311.23857625084605,-560]}' +
+ ']}';
+ 
+ modelText.innerHTML = templateJson;
+ load();
 }
