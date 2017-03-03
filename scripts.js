@@ -31,6 +31,27 @@ function init() {
 
         return geo;
     });
+
+    //add custom predefined shape for dependent goal element
+    go.Shape.defineFigureGenerator("DependentGoal", function(shape, w, h) {
+      var geo = new go.Geometry();
+        
+        //outer rectengle
+        var fig = new go.PathFigure(0, 0, true);
+        fig.add(new go.PathSegment(go.PathSegment.Line, w, 0));
+        fig.add(new go.PathSegment(go.PathSegment.Line, w, h));
+        fig.add(new go.PathSegment(go.PathSegment.Line, 0, h).close());
+        geo.add(fig);
+        
+        //inner rectengle
+        var fig2 = new go.PathFigure(0.05 * w, 0.1 * h, true);
+        fig2.add(new go.PathSegment(go.PathSegment.Line, 0.95 * w, 0.1 * h));
+        fig2.add(new go.PathSegment(go.PathSegment.Line, 0.95 * w, 0.9 * h));
+        fig2.add(new go.PathSegment(go.PathSegment.Line, 0.05 * w, 0.9 * h).close());
+        geo.add(fig2);
+        
+        return geo;
+    });
     
 
 
@@ -254,6 +275,7 @@ function init() {
                     { text: "Claim", figure: "Circle", fill: "#FFFFFF" },
                     { text: "Strategy", figure: "Parallelogram1", fill: "#FFFFFF" },
                     { text: "Undeveloped \n Goal", figure: "RectDiamond", fill: "#FFFFFF" },
+                    { text: "Dependent \n Goal", figure: "DependentGoal", fill: "#FFFFFF" },
 
                 ], [
                     // the Palette also has a disconnected Link, which the user can drag-and-drop
